@@ -599,32 +599,3 @@ refreshFavUI();
 // EVENT LISTENERS UNTUK TOMBOL IMPOR DEFAULT
 // ====================
 
-// Tombol Impor Default di header
-const importDefaultBtn = qs('#importDefaultBtn');
-if (importDefaultBtn) {
-    importDefaultBtn.addEventListener('click', async () => {
-        if (!confirm('Impor buku default? Buku yang ada akan diganti dengan koleksi default.')) return;
-        await importDefaultBooks();
-    });
-}
-
-// Tombol Impor Default di mobile menu
-const mImportDefault = document.getElementById('mImportDefault');
-if (mImportDefault) {
-    mImportDefault.addEventListener('click', async () => {
-        if (!confirm('Impor buku default? Buku yang ada akan diganti dengan koleksi default.')) return;
-        await importDefaultBooks();
-        mobileMenu.setAttribute('aria-hidden', 'true');
-        mobileMenu.style.display = 'none';
-    });
-}
-
-// Di dalam fungsi render(), setelah membuat card, tambahkan:
-el.querySelectorAll('img.cover').forEach(img => {
-  img.addEventListener('error', function() {
-    console.log('Cover image failed to load:', this.src);
-    // Ganti dengan placeholder
-    this.src = 'data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="96" height="140" viewBox="0 0 96 140"><rect width="96" height="140" fill="%23222"/><text x="48" y="70" text-anchor="middle" fill="%23fff" font-family="Arial" font-size="14">%F0%9F%93%9A</text><text x="48" y="90" text-anchor="middle" fill="%23aaa" font-family="Arial" font-size="10">' + encodeURIComponent(el.querySelector('h3')?.textContent?.substring(0, 20) || 'Book') + '</text></svg>';
-    this.alt = 'Cover not available';
-  });
-});
