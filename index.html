@@ -1,0 +1,175 @@
+<!doctype html>
+<html lang="id">
+<head>
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width,initial-scale=1" />
+	<title>OpenShelf — Perpustakaan Digital</title>
+	<link rel="stylesheet" href="./style.css">
+	<meta name="description" content="E-Library frontend-only: tambah, lihat, dan download e-book secara lokal (Kelompok5).">
+</head>
+<body data-theme="light">
+	<!-- Background layers (decorative, non-interactive) -->
+	<div class="bg-wrap"></div>
+	<div class="accent-orb o1" aria-hidden="true"></div>
+	<div class="accent-orb o2" aria-hidden="true"></div>
+	<div class="accent-orb o3" aria-hidden="true"></div>
+	<header class="site-header">
+		<div class="container header-inner">
+			<div class="brand">	
+				<div class="logo">
+					<img id="siteLogo" src="openshelf.png" alt="OpenShelf logo" />
+				</div>
+				<div>
+					<h1 class="site-title">OpenShelf</h1>
+					<p class="site-tag">Perpustakaan digital pribadi — Kelompok 5</p>
+				</div>
+			</div>
+			<div class="header-actions">
+				<div class="header-buttons">
+					<button id="addBtn" class="btn btn-primary">Tambah Buku</button>
+					<button id="importDefaultBtn" class="btn" title="Impor buku default">Impor Default</button>
+					<button id="clearBtn" class="btn" title="Hapus semua buku dari koleksi">Hapus Semua</button>
+				</div>
+
+				<!-- mobile hamburger -->
+				<button id="hamburger" class="btn btn-close mobile-only" aria-label="Menu">☰</button>
+				<nav id="mobileMenu" class="mobile-menu" aria-hidden="true">
+					<ul>
+						<li><button id="mFav" class="btn">Favorit</button></li>
+						<li><button id="mAdd" class="btn btn-primary">Tambah Buku</button></li>
+						<li><button id="mImportDefault" class="btn">Impor Default</button></li>
+						<li><button id="mClear" class="btn">Hapus Semua</button></li>
+					</ul>
+				</nav>
+			</div>
+			<!-- account area on right -->
+			<div class="account" style="margin-left:12px">
+				<button id="accountBtn" class="btn">👤 <span id="accountName">Akun</span> ▾</button>
+				<div id="accountMenu" class="account-menu hidden" aria-hidden="true">
+					<button id="switchAccount" class="btn">Ganti Akun</button>
+					<button id="logoutBtn" class="btn">Keluar</button>
+				</div>
+			</div>
+		</div>
+	</header>
+
+	<main class="container main">
+		<aside class="sidebar">
+			<div class="search-wrap">
+				<input id="search" class="search" placeholder="Cari judul, penulis, atau genre..." />
+				<button id="favToggle" class="btn fav-left" title="Tampilkan favorit">★ Favorit</button>
+			</div>
+			<div class="genres">
+				<h4>Genres</h4>
+				<div class="genre-list">
+					<button class="genre">Novel</button>
+					<button class="genre">Self-help</button>
+					<button class="genre">Filsafat</button>
+					<button class="genre">Sejarah</button>
+					<button class="genre">Sains</button>
+					<button class="genre">Teknologi</button>
+					<button class="genre">Anak-anak</button>
+					<button class="genre">Poetry</button>
+				</div>
+			</div>
+		</aside>
+
+		<section class="content">
+			<div id="status" class="status">Bekerja secara lokal (IndexedDB).</div>
+			<section id="booksGrid" class="books-grid" aria-live="polite"></section>
+			<div id="empty" class="empty">Tidak ada buku. Klik "Tambah Buku" untuk menambahkan koleksi Anda.</div>
+		</section>
+	</main>
+
+	<!-- Add / Edit Modal -->
+	<div id="modal" class="modal" aria-hidden="true">
+			<div class="modal-dialog">
+				<header class="modal-header">
+					<h3>Tambah Buku</h3>
+					<button id="closeModal" class="btn-close" aria-label="Tutup">✕</button>
+				</header>
+				<form id="bookForm" class="modal-body form-grid" enctype="multipart/form-data">
+					<div class="form-left">
+						<div class="preview-box">
+							<img id="coverPreview" class="cover-preview" src="" alt="Preview cover" />
+							<div id="fileInfo" class="file-info">Tidak ada file terpilih</div>
+						</div>
+					</div>
+					<div class="form-right">
+						<div class="row">
+							<label class="label-top">Judul<span class="required">*</span>
+								<input id="titleInput" name="title" required placeholder="Contoh: Laskar Pelangi" />
+							</label>
+							<label class="label-top">Penulis
+								<input name="author" placeholder="Contoh: Andrea Hirata" />
+							</label>
+						</div>
+						<div class="row">
+							<label class="label-top">Tahun
+								<input name="year" type="number" min="0" placeholder="Tahun terbit" />
+							</label>
+							<label class="label-top">Genre
+								<input name="genre" placeholder="Novel, Filsafat, Self-help..." />
+							</label>
+						</div>
+						<label class="label-top">Deskripsi (ringkas akan ditampilkan di kartu)
+							<textarea name="description" rows="4" placeholder="Tulis ringkasan singkat..."></textarea>
+						</label>
+						<div class="row">
+							<label class="label-top">File PDF (opsional)
+								<input id="fileInput" name="file" type="file" accept="application/pdf" />
+							</label>
+							<label class="label-top">Atau File URL (opsional)
+								<input id="fileUrl" name="fileUrl" placeholder="https://.../file.pdf" />
+							</label>
+						</div>
+						<div class="row small-gap">
+							<label class="label-top">Cover URL (opsional)
+								<input id="coverUrl" name="coverUrl" placeholder="https://..." />
+							</label>
+							<label class="label-top">Upload cover (opsional)
+								<input id="coverFile" name="coverFile" type="file" accept="image/*" />
+							</label>
+						</div>
+						<div class="modal-actions">
+							<button type="button" id="cancel" class="btn">Batal</button>
+							<button type="submit" class="btn btn-primary">Simpan</button>
+						</div>
+					</div>
+				</form>
+			</div>
+	</div>
+
+	<!-- Detail Modal -->
+	<div id="detailModal" class="modal" aria-hidden="true">
+		<div class="modal-dialog detail-dialog" role="dialog" aria-modal="true">
+			<header class="modal-header">
+				<h3 id="detailTitle">Judul</h3>
+				<button id="detailClose" class="btn-close" aria-label="Tutup">✕</button>
+			</header>
+			<div class="modal-body detail-body">
+				<div class="detail-grid">
+						<img id="detailCover" class="detail-cover" src="" alt="cover" />
+						<div class="detail-meta">
+							<div class="meta-row"><span class="meta-label">Rating</span> <div id="detailRating" class="rating"></div></div>
+							<div class="meta-row"><span class="meta-label">Penulis</span> <strong id="detailAuthor"></strong></div>
+							<div class="meta-row"><span class="meta-label">Tahun</span> <span id="detailYear"></span></div>
+							<div class="meta-row"><span class="meta-label">Genre</span> <span id="detailGenre" class="tag"></span></div>
+							<div id="detailDesc" class="desc" style="margin-top:10px"></div>
+							<div class="modal-actions" style="margin-top:16px;display:flex;gap:8px;align-items:center;">
+								<a id="detailDownload" class="btn btn-primary" href="#" target="_blank" rel="noopener">Download</a>
+								<button id="detailCloseBtn" class="btn">Tutup</button>
+							</div>
+						</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<footer class="site-footer">
+		<div class="container">© <span id="year"></span> OpenShelf — get your favorite books</div>
+	</footer>
+
+	<script src="./script.js" defer></script>
+</body>
+</html>

@@ -1,0 +1,78 @@
+<!doctype html>
+<html lang="id">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Masuk — E-Library</title>
+  <link rel="stylesheet" href="./style.css">
+  <meta name="description" content="Halaman masuk E-Library">
+</head>
+<body data-theme="light">
+  <main class="page-center">
+    <div class="login-panel" role="dialog" aria-modal="true" aria-labelledby="loginTitle">
+      <h2 id="loginTitle">Masuk ke E-Library</h2>
+      <p>Masuk untuk melihat koleksi dan mengunduh buku.</p>
+  <form id="loginForm">
+        <input id="username" name="username" placeholder="Nama pengguna" required autocomplete="username" />
+        <div class="input-group">
+          <input id="password" name="password" placeholder="Kata sandi" type="password" required autocomplete="current-password" />
+          <button type="button" class="pw-toggle" id="pwToggle" aria-label="Tampilkan kata sandi" aria-pressed="false" aria-controls="password">
+            <!-- eye (visible) -->
+            <svg class="icon-eye" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+              <path d="M2 12s4-7 10-7 10 7 10 7-4 7-10 7S2 12 2 12z" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+              <circle cx="12" cy="12" r="3" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+            <!-- eye-off (hidden by default) -->
+            <svg class="icon-eye-off" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+              <path d="M17.94 17.94A10.06 10.06 0 0 1 12 19c-6 0-10-7-10-7a19.6 19.6 0 0 1 4.44-5.5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+              <path d="M1 1l22 22" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+              <path d="M9.88 9.88a3 3 0 0 0 4.24 4.24" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </button>
+          <label class="switch">
+            <input id="remember" type="checkbox" />
+            <span class="slider" aria-hidden="true"></span>
+            <span class="switch-label">Ingat saya</span>
+          </label>
+        </div>
+        <button type="submit" class="btn btn-primary">Masuk</button>
+      </form>
+      <p class="small-note">Catatan: Pastikan Anda Log In terlebih dahulu sebelum melihat e-book.</p>
+    </div>
+  </main>
+
+  <script>
+    // redirect to app if already logged
+    if (localStorage.getItem('elib_logged') || sessionStorage.getItem('elib_logged')){
+      window.location = './index.html';
+    }
+    const form = document.getElementById('loginForm');
+    form.addEventListener('submit', e=>{
+      e.preventDefault(); const u = (document.getElementById('username')||{}).value||''; const p = (document.getElementById('password')||{}).value||''; const rem = (document.getElementById('remember')||{}).checked;
+      if (!u || !p){ alert('Masukkan nama pengguna dan kata sandi'); return }
+      if (rem) localStorage.setItem('elib_logged','1'); else sessionStorage.setItem('elib_logged','1');
+      window.location = './index.html';
+    })
+
+    // pw visibility toggle
+  const pwToggle = document.getElementById('pwToggle');
+  const pwInput = document.getElementById('password');
+  if (pwToggle && pwInput){
+    pwToggle.addEventListener('click', ()=>{
+      const visible = pwToggle.classList.toggle('closed');
+      if (visible){
+        pwInput.type = 'text';
+        pwToggle.setAttribute('aria-label','Sembunyikan kata sandi');
+        pwToggle.setAttribute('aria-pressed','true');
+      } else {
+        pwInput.type = 'password';
+        pwToggle.setAttribute('aria-label','Tampilkan kata sandi');
+        pwToggle.setAttribute('aria-pressed','false');
+      }
+    });
+  }
+    // focus username on load
+    window.addEventListener('load', ()=>{ const u = document.getElementById('username'); if (u) u.focus(); })
+  </script>
+</body>
+</html>
