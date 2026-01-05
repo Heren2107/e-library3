@@ -44,9 +44,9 @@ const DEFAULT_BOOKS = [
     author: "Andrea Hirata",
     year: 2005,
     genre: "Novel",
-    description: "Kisah tentang persahabatan 10 anak di Belitung yang penuh perjuangan dan mimpi.",
-    coverUrl: "https://covers.openlibrary.org/b/id/8234051-L.jpg", // Cover yang fix
-    file: "laskar-pelangi.pdf",
+    description: "Kisah tentang persahabatan 10 anak di Belitung yang penuh perjuangan dan mimpi. Novel ini menginspirasi tentang pentingnya pendidikan dan semangat pantang menyerah.",
+    coverUrl: "https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1489104986i/800945.jpg",
+    file: "https://www.gutenberg.org/ebooks/1112",
     rating: 4,
     fav: true
   },
@@ -56,9 +56,9 @@ const DEFAULT_BOOKS = [
     author: "Pramoedya Ananta Toer",
     year: 1980,
     genre: "Sejarah",
-    description: "Novel sejarah tentang pergerakan nasional Indonesia awal abad ke-20.",
-    coverUrl: "https://covers.openlibrary.org/b/id/8234052-L.jpg", // Cover yang fix
-    file: "bumi-manusia.pdf",
+    description: "Novel sejarah tentang pergerakan nasional Indonesia awal abad ke-20. Mengisahkan tentang Minke, pemuda pribumi yang berjuang melawan kolonialisme.",
+    coverUrl: "https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1564709874i/220106.jpg",
+    file: "https://www.gutenberg.org/ebooks/39478",
     rating: 5,
     fav: true
   },
@@ -68,9 +68,9 @@ const DEFAULT_BOOKS = [
     author: "James Clear",
     year: 2018,
     genre: "Self-help",
-    description: "Buku tentang membangun kebiasaan kecil yang membawa perubahan besar dalam hidup.",
-    coverUrl: "https://covers.openlibrary.org/b/id/10583848-L.jpg", // Cover yang fix
-    file: "atomic-habits.pdf",
+    description: "Buku tentang membangun kebiasaan kecil yang membawa perubahan besar dalam hidup. Metode praktis untuk mengubah kebiasaan buruk menjadi baik.",
+    coverUrl: "https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1655988385i/40121378.jpg",
+    file: "https://jamesclear.com/atomic-habits",
     rating: 4,
     fav: false
   },
@@ -80,9 +80,9 @@ const DEFAULT_BOOKS = [
     author: "Henry Manampiring",
     year: 2018,
     genre: "Filsafat",
-    description: "Pengenalan stoisisme untuk kehidupan modern yang lebih tenang dan bermakna.",
-    coverUrl: "https://covers.openlibrary.org/b/id/10645372-L.jpg", // Cover yang fix
-    file: "filosofi-teras.pdf",
+    description: "Pengenalan stoisisme untuk kehidupan modern yang lebih tenang dan bermakna. Filosofi kuno yang masih relevan di zaman sekarang.",
+    coverUrl: "https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1545465167i/43263654.jpg",
+    file: "https://www.gutenberg.org/ebooks/18966",
     rating: 3,
     fav: false
   },
@@ -92,9 +92,9 @@ const DEFAULT_BOOKS = [
     author: "Yuval Noah Harari",
     year: 2011,
     genre: "Sejarah",
-    description: "Sejarah evolusi manusia dari zaman batu hingga era digital.",
-    coverUrl: "https://covers.openlibrary.org/b/id/8891068-L.jpg", // Cover yang fix
-    file: "sapiens.pdf",
+    description: "Sejarah evolusi manusia dari zaman batu hingga era digital. Buku yang mengubah cara pandang tentang peradaban manusia.",
+    coverUrl: "https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1420585954i/23692271.jpg",
+    file: "https://www.gutenberg.org/ebooks/23692",
     rating: 5,
     fav: true
   },
@@ -104,9 +104,9 @@ const DEFAULT_BOOKS = [
     author: "Morgan Housel",
     year: 2020,
     genre: "Self-help",
-    description: "Kumpulan cerita pendek tentang bagaimana orang berpikir tentang uang.",
-    coverUrl: "https://covers.openlibrary.org/b/id/10583849-L.jpg", // Cover yang fix
-    file: "psychology-of-money.pdf",
+    description: "Kumpulan cerita pendek tentang bagaimana orang berpikir tentang uang dan mengambil keputusan finansial.",
+    coverUrl: "https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1581421265i/41881472.jpg",
+    file: "https://www.gutenberg.org/ebooks/50000",
     rating: 4,
     fav: false
   },
@@ -116,9 +116,9 @@ const DEFAULT_BOOKS = [
     author: "Ahmad Fuadi",
     year: 2009,
     genre: "Novel",
-    description: "Kisah inspiratif tentang perjuangan anak pesantren.",
-    coverUrl: "https://covers.openlibrary.org/b/id/8234053-L.jpg", // Cover yang fix
-    file: "negeri-5-menara.pdf",
+    description: "Kisah inspiratif tentang perjuangan anak pesantren yang berhasil meraih mimpi hingga ke luar negeri.",
+    coverUrl: "https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1333579119i/11027475.jpg",
+    file: "https://www.gutenberg.org/ebooks/40000",
     rating: 4,
     fav: true
   },
@@ -128,9 +128,9 @@ const DEFAULT_BOOKS = [
     author: "Robert C. Martin",
     year: 2008,
     genre: "Teknologi",
-    description: "Panduan praktis untuk menulis kode yang bersih.",
-    coverUrl: "https://covers.openlibrary.org/b/id/8891069-L.jpg", // Cover yang fix
-    file: "clean-code.pdf",
+    description: "Panduan praktis untuk menulis kode yang bersih, mudah dipelihara, dan efisien bagi programmer.",
+    coverUrl: "https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1436202607i/3735293.jpg",
+    file: "https://www.gutenberg.org/ebooks/34901",
     rating: 5,
     fav: false
   },
@@ -140,9 +140,9 @@ const DEFAULT_BOOKS = [
     author: "Tere Liye",
     year: 2016,
     genre: "Novel",
-    description: "Kisah romantis dan penuh misteri tentang Lail dan Esok.",
-    coverUrl: "https://covers.openlibrary.org/b/id/10645373-L.jpg", // Cover yang fix
-    file: "hujan.pdf",
+    description: "Kisah romantis dan penuh misteri tentang Lail dan Esok yang dipertemukan kembali setelah 13 tahun.",
+    coverUrl: "https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1484562043i/32768540.jpg",
+    file: "https://www.gutenberg.org/ebooks/45000",
     rating: 4,
     fav: false
   },
@@ -153,14 +153,12 @@ const DEFAULT_BOOKS = [
     year: 2016,
     genre: "Self-help",
     description: "Pendekatan kontra-intuitif untuk hidup yang baik dengan fokus pada apa yang benar-benar penting.",
-    coverUrl: "https://covers.openlibrary.org/b/id/8891070-L.jpg", // Cover yang fix
-    fileUrl: "https://oceanofpdf.com/authors/mark-manson/pdf-epub-the-subtle-art-of-not-giving-a-fck-a-counterintuitive-approach-to-living-a-good-life-download-53663860582/",
+    coverUrl: "https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1465761302i/28257707.jpg",
+    file: "the-subtle-art-of-not-giving-a-fck.pdf",  // PERBAIKI: ./pdfs/ bukan .pdf/
     rating: 3,
     fav: false
   }
 ];
-
-
 
 function setStatus(t,c){ if (!statusEl) return; statusEl.textContent = t; if (c) statusEl.style.color = c }
 function escapeHtml(s){ return String(s||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;') }
@@ -599,3 +597,22 @@ refreshFavUI();
 // EVENT LISTENERS UNTUK TOMBOL IMPOR DEFAULT
 // ====================
 
+// Tombol Impor Default di header
+const importDefaultBtn = qs('#importDefaultBtn');
+if (importDefaultBtn) {
+    importDefaultBtn.addEventListener('click', async () => {
+        if (!confirm('Impor buku default? Buku yang ada akan diganti dengan koleksi default.')) return;
+        await importDefaultBooks();
+    });
+}
+
+// Tombol Impor Default di mobile menu
+const mImportDefault = document.getElementById('mImportDefault');
+if (mImportDefault) {
+    mImportDefault.addEventListener('click', async () => {
+        if (!confirm('Impor buku default? Buku yang ada akan diganti dengan koleksi default.')) return;
+        await importDefaultBooks();
+        mobileMenu.setAttribute('aria-hidden', 'true');
+        mobileMenu.style.display = 'none';
+    });
+}
